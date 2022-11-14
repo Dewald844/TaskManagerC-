@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FkB/04gqoQZYkWfOPeJI+7CbRATYKzVB6Mwm1OTtxD8lf04Wwmo6mwvz9OVBAqPCpT2NM6Z5PduL4X+gapIbJw==",
+  "dgSpecHash": "L0YE/jRyg3ZUhamUbqC9zPZSWvj2DkymzWTD8Xy3pM8hxb0WzdH6F3aAhqETWmCuakj3sSLkPpU1Jx7GTD7PXg==",
   "success": true,
-  "projectFilePath": "/Users/dewaldhaasbroek/Code/C#_playground/TaskManager/Task manager/Task manager.csproj",
+  "projectFilePath": "/Users/dewaldhaasbroek/Code/C#_playground/TaskManagerC-/TaskManager/Task manager/Task manager.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

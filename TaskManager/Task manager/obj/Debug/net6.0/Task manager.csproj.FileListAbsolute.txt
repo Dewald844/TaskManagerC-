@@ -1,0 +1,15 @@
+/Users/dewaldhaasbroek/Code/C#_playground/TaskManagerC-/TaskManager/Task manager/bin/Debug/net6.0/Task manager
+/Users/dewaldhaasbroek/Code/C#_playground/TaskManagerC-/TaskManager/Task manager/bin/Debug/net6.0/Task manager.deps.json
+/Users/dewaldhaasbroek/Code/C#_playground/TaskManagerC-/TaskManager/Task manager/bin/Debug/net6.0/Task manager.runtimeconfig.json
+/Users/dewaldhaasbroek/Code/C#_playground/TaskManagerC-/TaskManager/Task manager/bin/Debug/net6.0/Task manager.dll
+/Users/dewaldhaasbroek/Code/C#_playground/TaskManagerC-/TaskManager/Task manager/bin/Debug/net6.0/Task manager.pdb
+/Users/dewaldhaasbroek/Code/C#_playground/TaskManagerC-/TaskManager/Task manager/obj/Debug/net6.0/Task manager.csproj.AssemblyReference.cache
+/Users/dewaldhaasbroek/Code/C#_playground/TaskManagerC-/TaskManager/Task manager/obj/Debug/net6.0/Task manager.GeneratedMSBuildEditorConfig.editorconfig
+/Users/dewaldhaasbroek/Code/C#_playground/TaskManagerC-/TaskManager/Task manager/obj/Debug/net6.0/Task manager.AssemblyInfoInputs.cache
+/Users/dewaldhaasbroek/Code/C#_playground/TaskManagerC-/TaskManager/Task manager/obj/Debug/net6.0/Task manager.AssemblyInfo.cs
+/Users/dewaldhaasbroek/Code/C#_playground/TaskManagerC-/TaskManager/Task manager/obj/Debug/net6.0/Task manager.csproj.CoreCompileInputs.cache
+/Users/dewaldhaasbroek/Code/C#_playground/TaskManagerC-/TaskManager/Task manager/obj/Debug/net6.0/Task manager.dll
+/Users/dewaldhaasbroek/Code/C#_playground/TaskManagerC-/TaskManager/Task manager/obj/Debug/net6.0/refint/Task manager.dll
+/Users/dewaldhaasbroek/Code/C#_playground/TaskManagerC-/TaskManager/Task manager/obj/Debug/net6.0/Task manager.pdb
+/Users/dewaldhaasbroek/Code/C#_playground/TaskManagerC-/TaskManager/Task manager/obj/Debug/net6.0/Task manager.genruntimeconfig.cache
+/Users/dewaldhaasbroek/Code/C#_playground/TaskManagerC-/TaskManager/Task manager/obj/Debug/net6.0/ref/Task manager.dll

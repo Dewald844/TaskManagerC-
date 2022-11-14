@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/dewaldhaasbroek/Code/C#_playground/TaskManager/Task manager/Task manager.csproj",
+      "projectUniqueName": "/Users/dewaldhaasbroek/Code/C#_playground/TaskManagerC-/TaskManager/Task manager/Task manager.csproj",
       "projectName": "Task manager",
-      "projectPath": "/Users/dewaldhaasbroek/Code/C#_playground/TaskManager/Task manager/Task manager.csproj",
+      "projectPath": "/Users/dewaldhaasbroek/Code/C#_playground/TaskManagerC-/TaskManager/Task manager/Task manager.csproj",
       "packagesPath": "/Users/dewaldhaasbroek/.nuget/packages/",
-      "outputPath": "/Users/dewaldhaasbroek/Code/C#_playground/TaskManager/Task manager/obj/",
+      "outputPath": "/Users/dewaldhaasbroek/Code/C#_playground/TaskManagerC-/TaskManager/Task manager/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/dewaldhaasbroek/.nuget/NuGet/NuGet.Config"
