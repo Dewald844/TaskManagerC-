@@ -2,17 +2,19 @@ namespace Task_Manager;
 
 public class User
 {
-   public string FirstName;
-   public string LastName;
+   public string  FirstName;
+   public string  LastName;
+   public string UserName;
    private string _Password;
-   private bool  _IsAdmin;
+   private bool   _IsAdmin;
 
    public User(string fName, string lName, string password, bool isAdmin)
    {
       FirstName = fName;
       LastName  = lName;
-      _Password  = password;
-      _IsAdmin   = isAdmin;
+      UserName = fName + "_" + lName;
+      _Password = password;
+      _IsAdmin  = isAdmin;
    }
 
    public bool CheckPassword(User user, string password)
@@ -23,7 +25,17 @@ public class User
    public string UserWritable(User user)
    {
       var isAdmin = user._IsAdmin ? "true" : "false";
-      return user.FirstName + "," + user.LastName + "," + user._Password + "," + isAdmin + "\n";
+      return
+         user.FirstName + "," +
+         user.LastName  + "," +
+         user.UserName + "," +
+         user._Password + "," +
+         isAdmin + "\n";
+   }
+
+   public bool IsAdmin(User user)
+   {
+      return user._IsAdmin;
    }
 
 }
@@ -57,5 +69,20 @@ public class UserFunctions
          var newUserString = newUser.UserWritable(newUser);
          helper.AppendNewUser(newUserString);
       }
+   }
+
+   public User CheckUserForSignIn(List<User> userL,  string userName, string password)
+   {
+      foreach (var user in userL)
+      {
+         if (user.UserName == userName)
+         {
+            if (user.CheckPassword(user, password))
+            {
+               return user;
+            }
+         }
+      }
+
    }
 }

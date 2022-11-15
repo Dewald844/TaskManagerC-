@@ -24,7 +24,7 @@ namespace Task_Manager
 
             foreach (var user in userL)
             {
-               Console.Write(user.FirstName + ", " + user.LastName + "\n");
+               Console.Write(user.FirstName +"\n");
             }
 
             Console.Write("\nCreate new user? y/n :" );
