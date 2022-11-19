@@ -1,18 +1,11 @@
-﻿// See https://aka.ms/new-console-template for more information
-
-using System;
-using Task_Manager;
-
-namespace Task_Manager
+﻿namespace Task_Manager
 {
 
    class Program
    {
       static void Main(string[] args)
       {
-
          IO_Helper helper = new IO_Helper();
-
          Console.Write("Welcome to task manager C#\n");
          Console.Write("Checking if needed files exist ...\n");
 
@@ -20,19 +13,17 @@ namespace Task_Manager
          {
             Console.Write("User and task file exists \n");
 
-            var userL = helper.ReadUsers();
+            var loggedInUser = UserFunctions.LogInUser(helper);
+            Console.Write("\n Welcome " + loggedInUser.UserName);
 
-            foreach (var user in userL)
+            var menuItem = Menu.Selection(loggedInUser);
+
+            if (loggedInUser.IsAdmin(loggedInUser))
             {
-               Console.Write(user.FirstName +"\n");
-            }
-
-            Console.Write("\nCreate new user? y/n :" );
-            string createUser = Console.ReadLine();
-
-            if (createUser == "y")
-            {
-               new UserFunctions().CreateNewUserFromCommandLine(helper);
+               if (menuItem == 1)
+               {
+                  UserFunctions.CreateNewUser(helper);
+               }
             }
 
          }
@@ -42,7 +33,6 @@ namespace Task_Manager
             helper.CreateUserFile();
             helper.CreateTaskFile();
          }
-
       }
    }
 }

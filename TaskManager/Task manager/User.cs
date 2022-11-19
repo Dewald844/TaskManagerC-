@@ -40,9 +40,9 @@ public class User
 
 }
 
-public class UserFunctions
+public abstract class UserFunctions
 {
-   public void CreateNewUserFromCommandLine(IO_Helper helper)
+   public static void CreateNewUser(IO_Helper helper)
    {
       Console.Write("\nEnter user first name :" );
       var userFirstName = Console.ReadLine();
@@ -58,6 +58,7 @@ public class UserFunctions
       Console.Write("\nCreating new user");
       Console.Write("\nFirst name : " + userFirstName);
       Console.Write("\nLast name : " + userLastName);
+      Console.Write("\nUser name : " + userFirstName + "_" + userLastName);
       Console.Write("\n Admin access : " + adminAccess);
 
       Console.Write("Proceed ? y/n :");
@@ -71,18 +72,44 @@ public class UserFunctions
       }
    }
 
-   public User CheckUserForSignIn(List<User> userL,  string userName, string password)
+   public static User LogInUser (IO_Helper helper)
    {
+      List<User> userL = helper.ReadUsers();
+
+      User? maybeUser = null;
+
+      Console.Write("Please enter your credentials to log in");
+      Console.Write("\nUsername : ");
+      var usernameInput = Console.ReadLine();
+
       foreach (var user in userL)
       {
-         if (user.UserName == userName)
+         if (user.UserName == usernameInput)
          {
-            if (user.CheckPassword(user, password))
-            {
-               return user;
-            }
+            maybeUser = user;
          }
       }
 
+      if (maybeUser == null)
+      {
+         Console.Write("\nUser name not found please try again.");
+         LogInUser(helper);
+      }
+      else
+      {
+         Console.Write("\nPassword :");
+         var password = Console.ReadLine();
+
+         if (password != null && maybeUser.CheckPassword(maybeUser, password))
+         {
+
+         }
+         else
+         {
+            Console.Write("Incorrect password please try again");
+         }
+      }
+
+      return maybeUser;
    }
 }

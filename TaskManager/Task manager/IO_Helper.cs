@@ -37,7 +37,7 @@ public class IO_Helper
       for (int i = 0; i < userStringArray.Length - 1; i++)
       {
          string[] userLine = userStringArray[i].Split(",");
-         bool isAdmin = userLine[3] == "true" ? true : false;
+         bool isAdmin = userLine[4] == "true" ? true : false;
          User user = new User(userLine[0], userLine[1], userLine[2], isAdmin);
          userArray.Add(user);
       }
