@@ -20,12 +20,14 @@ public class IO_Helper
 
    public void CreateUserFile()
    {
-      File.Create(UserFilePath);
+      var file =  File.Create(UserFilePath);
+      file.Close();
    }
 
    public void CreateTaskFile()
    {
-      File.Create(TaskFilePath);
+      var file = File.Create(TaskFilePath);
+      file.Close();
    }
 
    public List<User> ReadUsers()
@@ -37,8 +39,8 @@ public class IO_Helper
       for (int i = 0; i < userStringArray.Length - 1; i++)
       {
          string[] userLine = userStringArray[i].Split(",");
-         bool isAdmin = userLine[4] == "true" ? true : false;
-         User user = new User(userLine[0], userLine[1], userLine[2], isAdmin);
+         bool isAdmin = userLine[5] == "true";
+         User user = new User(Int32.Parse(userLine[0]), userLine[1], userLine[2], userLine[3] , isAdmin);
          userArray.Add(user);
       }
 

@@ -1,15 +1,19 @@
+using System.Security.Cryptography;
+
 namespace Task_Manager;
 
 public class User
 {
+   public int Id;
    public string  FirstName;
    public string  LastName;
    public string UserName;
    private string _Password;
    private bool   _IsAdmin;
 
-   public User(string fName, string lName, string password, bool isAdmin)
+   public User(int id, string fName, string lName, string password, bool isAdmin)
    {
+      Id = id;
       FirstName = fName;
       LastName  = lName;
       UserName = fName + "_" + lName;
@@ -26,6 +30,7 @@ public class User
    {
       var isAdmin = user._IsAdmin ? "true" : "false";
       return
+         user.Id + "," +
          user.FirstName + "," +
          user.LastName  + "," +
          user.UserName + "," +
@@ -44,6 +49,9 @@ public abstract class UserFunctions
 {
    public static void CreateNewUser(IO_Helper helper)
    {
+
+      var nextId = helper.ReadUsers().Count + 1;
+
       Console.Write("\nEnter user first name :" );
       var userFirstName = Console.ReadLine();
       Console.Write("\nEnter user last name :" );
@@ -66,7 +74,7 @@ public abstract class UserFunctions
 
       if (proceed == "y")
       {
-         var newUser = new User(userFirstName, userLastName, userPassword, userAdmin);
+         var newUser = new User(nextId, userFirstName, userLastName, userPassword, userAdmin);
          var newUserString = newUser.UserWritable(newUser);
          helper.AppendNewUser(newUserString);
       }
@@ -100,10 +108,7 @@ public abstract class UserFunctions
          Console.Write("\nPassword :");
          var password = Console.ReadLine();
 
-         if (password != null && maybeUser.CheckPassword(maybeUser, password))
-         {
-
-         }
+         if (password != null && maybeUser.CheckPassword(maybeUser, password)){ }
          else
          {
             Console.Write("Incorrect password please try again");

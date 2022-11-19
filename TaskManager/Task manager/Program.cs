@@ -25,13 +25,14 @@
                   UserFunctions.CreateNewUser(helper);
                }
             }
-
          }
          else
          {
-            Console.Write("User and task file not found creating file...\n");
+            Console.Write("\nUser and task file not found creating file...");
             helper.CreateUserFile();
             helper.CreateTaskFile();
+            Console.Write("\nPlease create an admin user");
+            UserFunctions.CreateNewUser(helper);
          }
       }
    }
