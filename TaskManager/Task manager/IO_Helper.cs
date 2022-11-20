@@ -32,28 +32,65 @@ public class IO_Helper
 
    public List<User> ReadUsers()
    {
-      string userFileString = File.ReadAllText(UserFilePath);
-      string[] userStringArray =  userFileString.Split("\n");
+      string[] userStringArray = File.ReadAllText(UserFilePath).Split("\n");
       List<User> userArray = new List<User>();
 
       for (int i = 0; i < userStringArray.Length - 1; i++)
       {
-         string[] userLine = userStringArray[i].Split(",");
+         string[] userLine = userStringArray[i].Split("|");
          bool isAdmin = userLine[5] == "true";
-         User user = new User(Int32.Parse(userLine[0]), userLine[1], userLine[2], userLine[3] , isAdmin);
+         User user = new User(
+            Int32.Parse(userLine[0])
+            , userLine[1]
+            , userLine[2]
+            , userLine[4]
+            , isAdmin);
          userArray.Add(user);
       }
 
       return userArray;
    }
 
-   public string ReadTasks()
+   public List<Task> ReadTasks()
    {
-      return File.ReadAllText(TaskFilePath);
+      string[] taskStringArray =  File.ReadAllText(TaskFilePath).Split("\n");
+
+      Console.Write(taskStringArray.Length + "\n");
+      List<Task> taskArray = new List<Task>();
+      if (taskStringArray.Length < 2 )
+      {
+
+      }
+      else
+      {
+         foreach (var taskString in taskStringArray)
+         {
+            string[] taskLine = taskString.Split("|");
+            bool complete = taskLine[5] == "true";
+            bool overDue = taskLine[6] == "true";
+            Task task = new Task(
+               Int32.Parse(taskLine[0])
+               , Int32.Parse(taskLine[1])
+               , taskLine[2]
+               , taskLine[3]
+               , DateTime.Parse(taskLine[4])
+               , complete
+               , overDue);
+
+            taskArray.Add(task);
+         }
+      }
+
+      return taskArray;
    }
 
    public void AppendNewUser (string userWritable)
    {
       File.AppendAllText(UserFilePath, userWritable);
+   }
+
+   public void AppendNewTask(string taskWritable)
+   {
+      File.AppendAllText(TaskFilePath, taskWritable);
    }
 }

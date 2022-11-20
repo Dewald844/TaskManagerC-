@@ -24,6 +24,10 @@
                {
                   UserFunctions.CreateNewUser(helper);
                }
+               else if (menuItem == 2)
+               {
+                  TaskFunctions.CreateNewTask(helper);
+               }
             }
          }
          else

@@ -30,11 +30,11 @@ public class User
    {
       var isAdmin = user._IsAdmin ? "true" : "false";
       return
-         user.Id + "," +
-         user.FirstName + "," +
-         user.LastName  + "," +
-         user.UserName + "," +
-         user._Password + "," +
+         user.Id        + "|" +
+         user.FirstName + "|" +
+         user.LastName  + "|" +
+         user.UserName  + "|" +
+         user._Password + "|" +
          isAdmin + "\n";
    }
 
@@ -61,23 +61,18 @@ public abstract class UserFunctions
       Console.Write("\nGrant user admin access? y/n :" );
       var adminAccess = Console.ReadLine();
 
-      var userAdmin = adminAccess == "y" ? true : false;
+      var userAdmin = adminAccess == "y";
 
       Console.Write("\nCreating new user");
       Console.Write("\nFirst name : " + userFirstName);
       Console.Write("\nLast name : " + userLastName);
       Console.Write("\nUser name : " + userFirstName + "_" + userLastName);
-      Console.Write("\n Admin access : " + adminAccess);
+      Console.Write("\nAdmin access : " + adminAccess);
 
-      Console.Write("Proceed ? y/n :");
-      var proceed = Console.ReadLine();
+      var newUser = new User(nextId, userFirstName, userLastName, userPassword, userAdmin);
+      var newUserString = newUser.UserWritable(newUser);
+      helper.AppendNewUser(newUserString);
 
-      if (proceed == "y")
-      {
-         var newUser = new User(nextId, userFirstName, userLastName, userPassword, userAdmin);
-         var newUserString = newUser.UserWritable(newUser);
-         helper.AppendNewUser(newUserString);
-      }
    }
 
    public static User LogInUser (IO_Helper helper)
@@ -86,7 +81,7 @@ public abstract class UserFunctions
 
       User? maybeUser = null;
 
-      Console.Write("Please enter your credentials to log in");
+      Console.Write("\nPlease enter your credentials to log in");
       Console.Write("\nUsername : ");
       var usernameInput = Console.ReadLine();
 
