@@ -1,3 +1,5 @@
+using System.Security.Cryptography;
+
 namespace Task_Manager;
 
 public class Task
@@ -37,9 +39,7 @@ public class Task
          task.DueDate     + "|" +
          task.Complete    + "|" +
          task.OverDue     + "\n";
-
    }
-
 }
 
 public abstract class TaskFunctions
@@ -68,5 +68,34 @@ public abstract class TaskFunctions
       var newTaskString = newTask.TaskWriteable(newTask);
 
       helper.AppendNewTask(newTaskString);
+   }
+
+   public static void ShowAllIncompleteTasks(IO_Helper helper)
+   {
+      var taskL = helper.ReadTasks();
+
+      foreach (var task in taskL.Where(task => !task.Complete)) // linq expression
+      {
+         Console.Write("\n" + task.Id +  " " + task.Title + " " + task.UserId + " " + task.DueDate);
+      }
+   }
+
+   public static void ShowAllOverDueTasks(IO_Helper helper)
+   {
+      var taskL = helper.ReadTasks();
+
+      foreach (var task in taskL.Where(task => task.OverDue))
+      {
+         Console.Write(task.Title + " " + task.UserId + " " + task.DueDate);
+      }
+   }
+
+   public static void MarkTaskAsComplete(IO_Helper helper)
+   {
+
+      ShowAllIncompleteTasks(helper);
+
+      Console.Write("\n Select task to complete");
+      var taskId = Int32.Parse(Console.ReadLine());
    }
 }

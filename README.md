@@ -9,13 +9,13 @@ Simple command line task manager
  
 ## Admin user
  - [x] Login
- - [ ] Show outstanding tasks
- - [ ] Show overdue tasks 
- - [ ] Add new tasks to user (Assignee)
+ - [x] Show outstanding tasks
+ - [x] Show overdue tasks 
+ - [x] Add new tasks to user (Assignee)
  - [x] Add new user to program
  
 ## Tasks
  - [x] Task class 
- - [ ] Complete task function
+ - [x] Create task function
  - [ ] Extent due date function
  - [ ] Complete task function

@@ -32,14 +32,14 @@ public class IO_Helper
 
    public List<User> ReadUsers()
    {
-      string[] userStringArray = File.ReadAllText(UserFilePath).Split("\n");
-      List<User> userArray = new List<User>();
+      var userStringArray = File.ReadAllText(UserFilePath).Split("\n");
+      var userArray = new List<User>();
 
       for (int i = 0; i < userStringArray.Length - 1; i++)
       {
-         string[] userLine = userStringArray[i].Split("|");
-         bool isAdmin = userLine[5] == "true";
-         User user = new User(
+         var userLine = userStringArray[i].Split("|");
+         var isAdmin = userLine[5] == "true";
+         var user = new User(
             Int32.Parse(userLine[0])
             , userLine[1]
             , userLine[2]
@@ -53,22 +53,19 @@ public class IO_Helper
 
    public List<Task> ReadTasks()
    {
-      string[] taskStringArray =  File.ReadAllText(TaskFilePath).Split("\n");
+      var taskStringArray =  File.ReadAllText(TaskFilePath).Split("\n");
+      var taskArray = new List<Task>();
 
-      Console.Write(taskStringArray.Length + "\n");
-      List<Task> taskArray = new List<Task>();
       if (taskStringArray.Length < 2 )
-      {
-
-      }
+      { }
       else
       {
-         foreach (var taskString in taskStringArray)
+         for (int i = 0; i < taskStringArray.Length - 1; i++)
          {
-            string[] taskLine = taskString.Split("|");
-            bool complete = taskLine[5] == "true";
-            bool overDue = taskLine[6] == "true";
-            Task task = new Task(
+            var taskLine = taskStringArray[i].Split("|");
+            var complete = taskLine[5] == "true";
+            var overDue = taskLine[6] == "true";
+            var task = new Task (
                Int32.Parse(taskLine[0])
                , Int32.Parse(taskLine[1])
                , taskLine[2]
@@ -77,7 +74,7 @@ public class IO_Helper
                , complete
                , overDue);
 
-            taskArray.Add(task);
+            taskArray.Add(task.CheckOverdue(task));
          }
       }
 

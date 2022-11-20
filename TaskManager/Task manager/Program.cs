@@ -20,13 +20,32 @@
 
             if (loggedInUser.IsAdmin(loggedInUser))
             {
-               if (menuItem == 1)
+               switch (menuItem)
                {
-                  UserFunctions.CreateNewUser(helper);
+                  case 1:
+                     UserFunctions.CreateNewUser(helper);
+                     break;
+                  case 2:
+                     TaskFunctions.CreateNewTask(helper);
+                     break;
+                  case 3:
+                     TaskFunctions.ShowAllIncompleteTasks(helper);
+                     break;
+                  case 4:
+                     TaskFunctions.ShowAllOverDueTasks(helper);
+                     break;
                }
-               else if (menuItem == 2)
+            }
+            else
+            {
+               switch (menuItem)
                {
-                  TaskFunctions.CreateNewTask(helper);
+                  case 1 :
+                     break;
+                  case 2:
+                     break;
+                  case 3:
+                     break;
                }
             }
          }
