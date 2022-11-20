@@ -18,35 +18,44 @@
 
             var menuItem = Menu.Selection(loggedInUser);
 
-            if (loggedInUser.IsAdmin(loggedInUser))
+            while (menuItem != 0)
             {
-               switch (menuItem)
+               if (loggedInUser.IsAdmin(loggedInUser))
                {
-                  case 1:
-                     UserFunctions.CreateNewUser(helper);
-                     break;
-                  case 2:
-                     TaskFunctions.CreateNewTask(helper);
-                     break;
-                  case 3:
-                     TaskFunctions.ShowAllIncompleteTasks(helper);
-                     break;
-                  case 4:
-                     TaskFunctions.ShowAllOverDueTasks(helper);
-                     break;
+                  switch (menuItem)
+                  {
+                     case 1:
+                        UserFunctions.CreateNewUser(helper);
+                        break;
+                     case 2:
+                        TaskFunctions.CreateNewTask(helper);
+                        break;
+                     case 3:
+                        TaskFunctions.ShowAllIncompleteTasks(helper);
+                        break;
+                     case 4:
+                        TaskFunctions.ShowAllOverDueTasks(helper);
+                        break;
+                  }
                }
-            }
-            else
-            {
-               switch (menuItem)
+               else
                {
-                  case 1 :
-                     break;
-                  case 2:
-                     break;
-                  case 3:
-                     break;
+                  switch (menuItem)
+                  {
+                     case 1:
+                        TaskFunctions.ShowAllIncompleteTasksForUser(helper, loggedInUser.Id);
+                        break;
+                     case 2:
+                        TaskFunctions.ExtendTaskDueDate(helper, loggedInUser.Id);
+                        break;
+                     case 3:
+                        TaskFunctions.MarkTaskAsComplete(helper, loggedInUser.Id);
+                        break;
+                  }
                }
+
+               menuItem = Menu.Selection(loggedInUser);
+
             }
          }
          else

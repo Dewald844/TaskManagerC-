@@ -1,2 +1,4 @@
 1|1|Skottlegoed|Was die skottlegoed asb|2022/10/21 00:00:00|False|False
-2|2|Lunch|Maak asb my toebroodjies|2022/10/21 00:00:00|False|False
+2|2|Lunch|Maak asb my toebroodjies|2022/10/21 00:00:00|True|False
+3|2|Slaap|Slaap asb voor 10 uur|2022/10/24 00:00:00|False|False
+4|2|Uitvee|Vee asb my kamer uit|2022/10/22 00:00:00|False|False

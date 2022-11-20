@@ -25,7 +25,7 @@ public class Task
 
    public Task CheckOverdue(Task task)
    {
-      task.OverDue = task.DueDate < DateTime.Now;
+      task.OverDue = task.DueDate > DateTime.Now;
       return task;
    }
 
@@ -90,12 +90,63 @@ public abstract class TaskFunctions
       }
    }
 
-   public static void MarkTaskAsComplete(IO_Helper helper)
+   public static void MarkTaskAsComplete(IO_Helper helper, int userId)
    {
+      var taskL = helper.ReadTasks();
 
-      ShowAllIncompleteTasks(helper);
+      foreach (var task in taskL.Where(task => !task.Complete && task.UserId == userId)) // linq expression
+      {
+         Console.Write("\n" + task.Id +  " " + task.Title + " " + task.UserId + " " + task.DueDate);
+      }
 
       Console.Write("\n Select task to complete");
       var taskId = Int32.Parse(Console.ReadLine());
+
+      foreach (var task in taskL)
+      {
+         if (task.Id == taskId)
+         {
+            task.Complete = true;
+         }
+      }
+
+      helper.RewriteTaskFile(taskL);
+   }
+
+   public static void ShowAllIncompleteTasksForUser(IO_Helper helper, int userId)
+   {
+      var taskL = helper.ReadTasks();
+
+      foreach (var task in taskL.Where(task => !task.Complete && task.UserId == userId)) // linq expression
+      {
+         Console.Write("\n" + task.Id +  " " + task.Title + " " + task.UserId + " " + task.DueDate);
+      }
+   }
+
+   public static void ExtendTaskDueDate(IO_Helper helper, int userId)
+   {
+      var taskL = helper.ReadTasks();
+
+      foreach (var task in taskL.Where(task => !task.Complete && task.UserId == userId)) // linq expression
+      {
+         Console.Write("\n" + task.Id +  " " + task.Title + " " + task.UserId + " " + task.DueDate);
+      }
+
+      Console.Write("\n Select task to complete");
+      var taskId = Int32.Parse(Console.ReadLine());
+
+      foreach (var task in taskL)
+      {
+         if (task.Id == taskId)
+         {
+            Console.Write("Enter new due date (mm/dd/yyyy : ");
+            var dateString = Console.ReadLine();
+            var newDate = DateTime.Parse(dateString);
+            task.DueDate = newDate;
+            task.CheckOverdue(task);
+         }
+      }
+
+      helper.RewriteTaskFile(taskL);
    }
 }

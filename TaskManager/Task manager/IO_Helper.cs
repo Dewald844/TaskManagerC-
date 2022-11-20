@@ -63,8 +63,8 @@ public class IO_Helper
          for (int i = 0; i < taskStringArray.Length - 1; i++)
          {
             var taskLine = taskStringArray[i].Split("|");
-            var complete = taskLine[5] == "true";
-            var overDue = taskLine[6] == "true";
+            var complete = taskLine[5] == "True";
+            var overDue = taskLine[6] == "True";
             var task = new Task (
                Int32.Parse(taskLine[0])
                , Int32.Parse(taskLine[1])
@@ -89,5 +89,19 @@ public class IO_Helper
    public void AppendNewTask(string taskWritable)
    {
       File.AppendAllText(TaskFilePath, taskWritable);
+   }
+
+   public void RewriteTaskFile(List<Task> taskL)
+   {
+      File.Delete(TaskFilePath);
+
+      var newFile = File.Create(TaskFilePath);
+
+      newFile.Close();
+
+      foreach (var task in taskL)
+      {
+         AppendNewTask(task.TaskWriteable(task));
+      }
    }
 }
