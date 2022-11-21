@@ -5,8 +5,8 @@ using System.IO;
 public class IO_Helper
 {
 
-   public string UserFilePath = "../../../../Files/user.txt";
-   public string TaskFilePath = "../../../../Files/task.txt";
+   private string UserFilePath = "../../../../Files/user.txt";
+   private string TaskFilePath = "../../../../Files/task.txt";
 
    public bool CheckUserFile()
    {

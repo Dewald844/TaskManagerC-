@@ -4,7 +4,7 @@ Simple command line task manager
 ## User
  - [x] Login 
  - [x] Show active tasks
- - [ ] Extent due date
+ - [x] Extent due date
  - [x] Complete task
  
 ## Admin user
@@ -17,5 +17,5 @@ Simple command line task manager
 ## Tasks
  - [x] Task class 
  - [x] Create task function
- - [ ] Extent due date function
+ - [x] Extent due date function
  - [x] Complete task function
